@@ -33,7 +33,7 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
             binding.characterModel=characters
             binding.executePendingBindings()
 
-            binding.root.setOnClickListener {
+            binding.imageNext.setOnClickListener {
                 onClick(characters)
             }
 

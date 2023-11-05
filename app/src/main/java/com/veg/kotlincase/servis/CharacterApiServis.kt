@@ -21,6 +21,7 @@ interface CharacterApiServis{
     @GET("users")
     suspend fun getCharacter():List<CharacterModel>
 
+
 }
 
 object CharacterApi{
