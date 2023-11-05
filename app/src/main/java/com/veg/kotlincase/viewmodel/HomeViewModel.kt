@@ -21,8 +21,8 @@ class HomeViewModel:ViewModel() {
        get() = _character
 
 
-    private val _navigateToSelectedCharacter=MutableLiveData<CharacterModel>()
-    val navigateToSelectedCharacter:LiveData<CharacterModel>
+    private val _navigateToSelectedCharacter=MutableLiveData<CharacterModel?>()
+    val navigateToSelectedCharacter:LiveData<CharacterModel ?>
        get() = _navigateToSelectedCharacter
 
 
@@ -52,8 +52,12 @@ class HomeViewModel:ViewModel() {
     fun displayCharacterDetail(characterModel:CharacterModel){
         _navigateToSelectedCharacter.value=characterModel
     }
+    /*
     fun displayCharacterDetailComplete(){
         _navigateToSelectedCharacter.value=null!!
+    }*/
+    fun displayCharacterDetailComplete() {
+        _navigateToSelectedCharacter.value = null
     }
 
 

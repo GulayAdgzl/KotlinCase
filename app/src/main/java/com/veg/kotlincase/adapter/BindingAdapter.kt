@@ -23,14 +23,14 @@ fun bindRecyclerView(recyclerView:RecyclerView ,data:List<CharacterModel>?){
 fun bindStatus(statusImageView:ImageView,status: CharacterApiStatus?){
     when(status){
         CharacterApiStatus.LOADING->{
-            statusImageView.visibility= View.GONE
+            statusImageView.visibility= View.VISIBLE
             statusImageView.setImageResource(R.drawable.animation)
         }
         CharacterApiStatus.DONE->{
             statusImageView.visibility=View.GONE
         }
         else->{
-            statusImageView.visibility=View.GONE
+            statusImageView.visibility=View.VISIBLE
             statusImageView.setImageResource(R.drawable.animation)
         }
     }

@@ -21,6 +21,11 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
         )
         )
     }
+    override fun onBindViewHolder(holder:CharacterAdapter.CharacterViewHolder,position:Int){
+        //5
+        val character=getItem(position)
+        holder.bind(character,onClick)
+    }
     class CharacterViewHolder(private val binding:CharacterItemDesignBinding):RecyclerView.ViewHolder(binding.root){
         //2
         fun bind(characters:CharacterModel,
@@ -48,11 +53,7 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
 
     }
 
-    override fun onBindViewHolder(holder:CharacterAdapter.CharacterViewHolder,position:Int){
-        //5
-        val character=getItem(position)
-        holder.bind(character,onClick)
-    }
+
 }
 
 
