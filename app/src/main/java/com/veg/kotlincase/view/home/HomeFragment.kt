@@ -99,10 +99,8 @@ class HomeFragment : Fragment() {
                 viewmodel.displayCharacterDetailComplete()
             }
         }
-
         observeLiveData()
     }
-
     fun observeLiveData() {
         viewmodel.character.observe(viewLifecycleOwner, Observer { characterList ->
             characterList?.let {

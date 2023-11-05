@@ -36,8 +36,6 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
             binding.imageNext.setOnClickListener {
                 onClick(characters)
             }
-
-
         }
     }
     companion object DiffCallBack: DiffUtil.ItemCallback<CharacterModel>(){
@@ -49,11 +47,7 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
         override fun areContentsTheSame(oldItem: CharacterModel, newItem: CharacterModel): Boolean {
             return oldItem==newItem
         }
-
-
     }
-
-
 }
 
 

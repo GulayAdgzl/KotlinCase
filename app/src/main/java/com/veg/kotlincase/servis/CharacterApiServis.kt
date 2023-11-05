@@ -20,10 +20,7 @@ private val retrofit=Retrofit.Builder()
 interface CharacterApiServis{
     @GET("users")
     suspend fun getCharacter():List<CharacterModel>
-
-
 }
-
 object CharacterApi{
     val retrofitService:CharacterApiServis by lazy {
         retrofit.create(CharacterApiServis::class.java)

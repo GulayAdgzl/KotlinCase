@@ -26,7 +26,8 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+            app:layout_constraintTop_toTopOf="parent" >
+        </androidx.recyclerview.widget.RecyclerView>
         <ImageView
             android:id="@+id/img_status"
             android:layout_width="wrap_content"
@@ -37,8 +38,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="@+id/characterListRecycler"
             tools:srcCompat="@tools:sample/avatars" />
-
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
