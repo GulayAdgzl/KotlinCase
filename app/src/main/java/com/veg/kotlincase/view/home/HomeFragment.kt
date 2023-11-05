@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.veg.kotlincase.adapter.CharacterAdapter
 import com.veg.kotlincase.databinding.FragmentHomeBinding
@@ -37,6 +38,11 @@ class HomeFragment : Fragment() {
         // RecyclerView ayarları
         binding.characterListRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.characterListRecycler.adapter = recyclerCharacterAdapter
+
+        recyclerCharacterAdapter.onClick={
+            viewmodel.displayCharacterDetail(it)
+        }
+
         observeLiveData()
     }
     fun observeLiveData(){
@@ -46,6 +52,12 @@ class HomeFragment : Fragment() {
                 recyclerCharacterAdapter.submitList(characterList)
             }
         })
+        viewmodel.navigateToSelectedCharacter.observe(viewLifecycleOwner){
+            if(it !=null){
+                this.findNavController().navigate(HomeFragmentDirections.actionHomeFragmentToDetailFragment(it))
+                viewmodel.displayCharacterDetailComplete()
+            }
+        }
 
     }
 }

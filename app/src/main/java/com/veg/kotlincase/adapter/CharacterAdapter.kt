@@ -9,6 +9,7 @@ import com.veg.kotlincase.databinding.CharacterItemDesignBinding
 import com.veg.kotlincase.model.CharacterModel
 
 class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterViewHolder>(DiffCallBack) {
+   var onClick:(CharacterModel)->Unit={}
     override fun onCreateViewHolder(
         parent:ViewGroup,
         viewType:Int
@@ -22,9 +23,14 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
     }
     class CharacterViewHolder(private val binding:CharacterItemDesignBinding):RecyclerView.ViewHolder(binding.root){
         //2
-        fun bind(characters:CharacterModel){
+        fun bind(characters:CharacterModel,
+        onClick:(CharacterModel)->Unit={}){
             binding.characterModel=characters
             binding.executePendingBindings()
+
+            binding.root.setOnClickListener {
+                onClick(characters)
+            }
 
 
         }
@@ -45,7 +51,7 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
     override fun onBindViewHolder(holder:CharacterAdapter.CharacterViewHolder,position:Int){
         //5
         val character=getItem(position)
-        holder.bind(character)
+        holder.bind(character,onClick)
     }
 }
 
