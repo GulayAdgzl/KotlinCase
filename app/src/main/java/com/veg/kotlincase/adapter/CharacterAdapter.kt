@@ -1,5 +1,6 @@
 package com.veg.kotlincase.adapter
 
+import android.app.Dialog
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
@@ -10,6 +11,7 @@ import com.veg.kotlincase.model.CharacterModel
 
 class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterViewHolder>(DiffCallBack) {
    var onClick:(CharacterModel)->Unit={}
+
     override fun onCreateViewHolder(
         parent:ViewGroup,
         viewType:Int
@@ -37,6 +39,7 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
                 onClick(characters)
             }
         }
+
     }
     companion object DiffCallBack: DiffUtil.ItemCallback<CharacterModel>(){
 
@@ -48,6 +51,11 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
             return oldItem==newItem
         }
     }
+
+
+
+
+
 }
 
 

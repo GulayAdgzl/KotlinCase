@@ -25,6 +25,9 @@
                 android:layout_width="196dp"
                 android:layout_height="50dp"
                 android:layout_marginTop="15dp"
+                android:textColor="@color/Sandy_Tan"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:layout_marginBottom="28dp"
                 android:text="@{detailViewModel.selectedCharacter.name}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_detail_surname"
@@ -34,8 +37,11 @@
 
             <TextView
                 android:id="@+id/tv_detail_surname"
-                android:layout_width="186dp"
+                android:layout_width="196dp"
                 android:layout_height="50dp"
+                android:textColor="@color/Sandy_Tan"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:layout_marginBottom="48dp"
                 android:text="@{detailViewModel.selectedCharacter.username}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_detail_email"
@@ -45,8 +51,11 @@
 
             <TextView
                 android:id="@+id/tv_detail_email"
-                android:layout_width="181dp"
+                android:layout_width="196dp"
                 android:layout_height="50dp"
+                android:textColor="@color/Sandy_Tan"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:layout_marginBottom="55dp"
                 android:text="@{detailViewModel.selectedCharacter.email}"
                 app:layout_constraintBottom_toTopOf="@+id/tv_detail_phone"
@@ -55,8 +64,11 @@
                 app:layout_constraintTop_toBottomOf="@+id/tv_detail_surname" />
 
             <TextView
+                android:textColor="@color/Sandy_Tan"
+                android:textSize="14sp"
+                android:textStyle="bold"
                 android:id="@+id/tv_detail_phone"
-                android:layout_width="170dp"
+                android:layout_width="196dp"
                 android:layout_height="50dp"
                 android:layout_marginBottom="243dp"
                 android:text="@{detailViewModel.selectedCharacter.phone}"

@@ -29,6 +29,7 @@ class HomeViewModel:ViewModel() {
 
 
 
+
     init {
         getCharacters()
     }
@@ -39,7 +40,6 @@ class HomeViewModel:ViewModel() {
             try {
                 val characters = CharacterApi.retrofitService.getCharacter()
                 _character.value = characters
-
 
                 _status.value = CharacterApiStatus.DONE
             } catch (e: Exception) {
@@ -52,13 +52,14 @@ class HomeViewModel:ViewModel() {
     fun displayCharacterDetail(characterModel:CharacterModel){
         _navigateToSelectedCharacter.value=characterModel
     }
-    /*
-    fun displayCharacterDetailComplete(){
-        _navigateToSelectedCharacter.value=null!!
-    }*/
+
     fun displayCharacterDetailComplete() {
         _navigateToSelectedCharacter.value = null
     }
+
+
+
+
 
 
 
