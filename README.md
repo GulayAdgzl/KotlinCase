@@ -48,19 +48,14 @@ Bu uygulamayı yerel bir geliştirme ortamında çalıştırmak için aşağıda
 
 Bu projeye katkıda bulunmak isterseniz, lütfen [katkı rehberi](CONTRIBUTING.md) ve projenin açık sorunlarını inceleyin.
 
-## Lisans 📜
 
-Bu proje [MIT Lisansı](LICENSE) ile lisanslanmıştır. Daha fazla bilgi için LİSANS dosyasını kontrol edin.
 
 ## Ekran Görüntüleri 📸
 
 Burada uygulamanın çalışırken görüntüleri yer alacak:
+![Adsız tasarım](https://github.com/GulayAdgzl/KotlinCase/assets/44726684/edd328b2-ee1d-49f6-9dc4-95a9cf21d742)
 
-![Ana Ekran](screenshots/ana-ekran.png)
-*Ana ekranın görüntüsü*
 
-![Karakter Detay](screenshots/karakter-detay.png)
-*Karakter ayrıntılarının görüntüsü*
 
 ## Yapılacaklar
 - Search
