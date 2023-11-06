@@ -61,3 +61,7 @@ Burada uygulamanın çalışırken görüntüleri yer alacak:
 
 ![Karakter Detay](screenshots/karakter-detay.png)
 *Karakter ayrıntılarının görüntüsü*
+
+## Yapılacaklar
+- Search
+- photo
