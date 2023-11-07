@@ -51,9 +51,11 @@ Bu projeye katkıda bulunmak isterseniz, lütfen [katkı rehberi](CONTRIBUTING.m
 
 
 ## Ekran Görüntüleri 📸
+![Adsız tasarım](https://github.com/GulayAdgzl/KotlinCase/assets/44726684/45ce5e6b-c562-4e6c-9a43-fae2419643d4)
+
 
 Burada uygulamanın çalışırken görüntüleri yer alacak:
-![Adsız tasarım](https://github.com/GulayAdgzl/KotlinCase/assets/44726684/edd328b2-ee1d-49f6-9dc4-95a9cf21d742)
+
 
 
 
