@@ -2,6 +2,8 @@ package com.veg.kotlincase.view.home
 
 import android.os.Bundle
 import android.view.*
+import android.widget.Button
+import android.widget.EditText
 import android.widget.SearchView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -35,6 +37,9 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
+
+
         binding.viewmodel = viewmodel
 
         // RecyclerView ayarları
@@ -65,6 +70,7 @@ class HomeFragment : Fragment() {
                 recyclerCharacterAdapter.submitList(characterList)
             }
         })
+
     }
 
 

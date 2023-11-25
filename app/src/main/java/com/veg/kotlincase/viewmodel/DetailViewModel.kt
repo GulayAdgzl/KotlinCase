@@ -13,5 +13,9 @@ class DetailViewModel (character:CharacterModel,app:Application):AndroidViewMode
 
     init {
         _selectedCharacter.value=character
+
     }
+
+
+
 }
