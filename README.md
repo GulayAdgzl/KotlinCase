@@ -44,9 +44,6 @@ Bu uygulamayı yerel bir geliştirme ortamında çalıştırmak için aşağıda
 3. Gerekli bağımlılıkları (Retrofit, Moshi vb.) projenize ekleyin.
 4. API ile etkileşim sağlamak için API anahtarınızı projeye ekleyin (varsayılan olarak `BASE_URL` kullanılır).
 
-## Katkılar 🤝
-
-Bu projeye katkıda bulunmak isterseniz, lütfen [katkı rehberi](CONTRIBUTING.md) ve projenin açık sorunlarını inceleyin.
 
 
 
