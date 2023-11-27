@@ -2,13 +2,24 @@ package com.veg.kotlincase.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.recyclerview.widget.AsyncListDiffer
 import androidx.recyclerview.widget.DiffUtil
-import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 import com.veg.kotlincase.databinding.CharacterItemDesignBinding
 import com.veg.kotlincase.model.CharacterModel
 
-class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterViewHolder>(DiffCallBack) {
+class CharacterAdapter:RecyclerView.Adapter<CharacterAdapter.CharacterViewHolder>()
+   // ListAdapter<CharacterModel, CharacterAdapter.CharacterViewHolder>()
+{
+    private val differCallback = object : DiffUtil.ItemCallback<CharacterModel>() {
+        override fun areItemsTheSame(oldItem: CharacterModel, newItem: CharacterModel): Boolean {
+            return oldItem == newItem
+        }
+
+        override fun areContentsTheSame(oldItem: CharacterModel, newItem: CharacterModel): Boolean {
+            return oldItem == newItem
+        }
+    }
    var onClick:(CharacterModel)->Unit={}
 
     override fun onCreateViewHolder(
@@ -22,9 +33,11 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
         )
         )
     }
+    val differ=AsyncListDiffer(this,differCallback)
     override fun onBindViewHolder(holder:CharacterAdapter.CharacterViewHolder,position:Int){
         //5
-        val character=getItem(position)
+        val character=differ.currentList[position]
+            //getItem(position)
         holder.bind(character,onClick)
     }
     class CharacterViewHolder(private val binding:CharacterItemDesignBinding):RecyclerView.ViewHolder(binding.root){
@@ -40,19 +53,8 @@ class CharacterAdapter: ListAdapter<CharacterModel, CharacterAdapter.CharacterVi
         }
 
     }
-    companion object DiffCallBack: DiffUtil.ItemCallback<CharacterModel>(){
 
-        override fun areItemsTheSame(oldItem: CharacterModel, newItem: CharacterModel): Boolean {
-            return oldItem.id==newItem.id
-        }
-
-        override fun areContentsTheSame(oldItem: CharacterModel, newItem: CharacterModel): Boolean {
-            return oldItem==newItem
-        }
-    }
-
-
-
+    override fun getItemCount(): Int =differ.currentList.size
 
 
 }
