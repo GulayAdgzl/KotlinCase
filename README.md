@@ -59,6 +59,3 @@ Burada uygulamanın çalışırken görüntüleri yer alacak:
 
 
 
-## Yapılacaklar
-- Search
-- photo
