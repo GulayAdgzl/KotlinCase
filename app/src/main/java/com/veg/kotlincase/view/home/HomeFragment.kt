@@ -24,7 +24,7 @@ class HomeFragment : Fragment() {
     }
     private val recyclerCharacterAdapter = CharacterAdapter()
     private lateinit var binding: FragmentHomeBinding
-
+    private val characterList= arrayListOf<CharacterModel>()
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -38,13 +38,28 @@ class HomeFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-
-
         binding.viewmodel = viewmodel
 
         // RecyclerView ayarları
         binding.characterListRecycler.layoutManager = LinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
         binding.characterListRecycler.adapter = recyclerCharacterAdapter
+
+        //ekledim
+        if (checkNetwork(requireContext())){
+           observeLiveData()
+        }else  Toast.makeText(context,"No connect", Toast.LENGTH_LONG).show()
+
+
+        binding.swipeRefresh.setOnRefreshListener {
+            if (checkNetwork(requireContext())){
+                binding.swipeRefresh.isRefreshing = false
+               observeLiveData()
+            }else Toast.makeText(context,"No connect", Toast.LENGTH_LONG).show()
+            binding.swipeRefresh.isRefreshing = false
+
+
+        }
+
 
         recyclerCharacterAdapter.onClick = {
             viewmodel.displayCharacterDetail(it)
@@ -57,26 +72,81 @@ class HomeFragment : Fragment() {
                 viewmodel.displayCharacterDetailComplete()
             }
         }
-        observeLiveData()
+        binding.SearchView.setOnQueryTextListener(object  : SearchView.OnQueryTextListener,
+            androidx.appcompat.widget.SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(p0: String?): Boolean {
+                return false
+            }
 
-    }
-
-
-
-    fun observeLiveData() {
-        viewmodel.character.observe(viewLifecycleOwner, Observer { characterList ->
-            characterList?.let {
-                binding.characterListRecycler.visibility = View.VISIBLE
-                recyclerCharacterAdapter.submitList(characterList)
+            override fun onQueryTextChange(msg: String): Boolean {
+                filter(msg)
+                return false
+            }
+        })
+        binding.SearchView.setOnCloseListener(object : SearchView.OnCloseListener {
+            override fun onClose(): Boolean {
+                characterList.clear()
+                //
+                characterList.addAll(viewmodel.character.value ?: emptyList())
+                recyclerCharacterAdapter.differ.submitList(characterList)
+                if (checkNetwork(requireContext())){
+                   observeLiveData()
+                }else Toast.makeText(context,"No connect", Toast.LENGTH_LONG).show()
+                return false
             }
         })
 
+     //   observeLiveData()
+
     }
 
 
+   fun observeLiveData() {
+       viewmodel.character.observe(viewLifecycleOwner, Observer { characterList ->
+           characterList?.let {
+               // ViewModel'den gelen veriyle characterList'i doldur
+               this.characterList.clear()
+               this.characterList.addAll(it)
 
+               binding.characterListRecycler.visibility = View.VISIBLE
+               recyclerCharacterAdapter.differ.submitList(characterList)
+           }
+       })
+   }
+    private fun filter(text: String?){
+        val filteredList: ArrayList<CharacterModel> = ArrayList()
+        if (!text.isNullOrEmpty()) {
+            for (item in characterList) {
+                when {
+                    item.name?.lowercase()?.contains(text.lowercase()) == true -> filteredList.add(item)
+                   // item.username?.lowercase()?.contains(text.lowercase()) == true -> filteredList.add(item)
+                   // item.email?.lowercase()?.contains(text.lowercase()) == true -> filteredList.add(item)
+                }
+            }
+            if (!filteredList.isEmpty()){
+                recyclerCharacterAdapter.differ.submitList(filteredList)
+            }
+        }
+    }
+    private fun checkNetwork(context: Context): Boolean {
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
 
+        val capabilities =
+            connectivityManager.getNetworkCapabilities(connectivityManager.activeNetwork)
+        if (capabilities != null) {
+            if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)) {
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)) {
+                return true
+            } else if (capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)) {
+                return true
+            }
+        }else{
+            Toast.makeText(context,"Internet connection is not available.", Toast.LENGTH_LONG).show()
+        }
+        return false
+    }
 }
-
 
 
