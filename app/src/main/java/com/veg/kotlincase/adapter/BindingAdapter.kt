@@ -4,8 +4,6 @@ import android.view.View
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.bumptech.glide.Glide
-import com.bumptech.glide.request.RequestOptions
 import com.veg.kotlincase.R
 import com.veg.kotlincase.model.CharacterModel
 import com.veg.kotlincase.viewmodel.CharacterApiStatus
@@ -15,7 +13,7 @@ import com.veg.kotlincase.viewmodel.CharacterApiStatus
 @BindingAdapter("listData")
 fun bindRecyclerView(recyclerView:RecyclerView ,data:List<CharacterModel>?){
     val adapter=recyclerView.adapter as CharacterAdapter
-    adapter.submitList(data)
+    adapter.differ.submitList(data)
 }
 
 //2
